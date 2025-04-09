@@ -1,0 +1,8 @@
+{
+  "urls": [""],
+  "duration": "5",
+  "fps": "20",
+  "width": "320",
+  "height": "auto",
+  "browser": "firefox"
+}
