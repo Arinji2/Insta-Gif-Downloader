@@ -41,9 +41,17 @@ func main() {
 	}
 
 	resultsDir := "results"
-	if err := os.MkdirAll(resultsDir, os.ModePerm); err != nil {
-		fmt.Println("❌ Failed to create results folder:", err)
-		return
+	if _, err := os.Stat(resultsDir); os.IsNotExist(err) {
+		if err := os.MkdirAll(resultsDir, os.ModePerm); err != nil {
+			fmt.Println("❌ Failed to create results folder:", err)
+			return
+		}
+	} else {
+		os.RemoveAll(resultsDir)
+		if err := os.MkdirAll(resultsDir, os.ModePerm); err != nil {
+			fmt.Println("❌ Failed to create results folder:", err)
+			return
+		}
 	}
 
 	width := config.Width
